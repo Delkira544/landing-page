@@ -13,10 +13,10 @@
   <div class="container mx-auto px-4 md:px-6">
     <div class="flex h-16 items-center justify-between">
       <div class="flex items-center gap-2">
-        <div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">
-          R
+         <div class="h-16 w-16 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">
+          <img src="/icono.svg" alt="Logo" class="h-16 w-12 aspect-square" />
         </div>
-        <span class="text-xl font-bold tracking-tight">ReportaCiudad</span>
+        <span class="text-xl font-bold tracking-tight">TemuTrack</span>
       </div>
 
       <!-- Desktop Nav -->

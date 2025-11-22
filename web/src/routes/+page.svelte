@@ -1,5 +1,5 @@
 <script>
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount } from 'svelte';
   import Header from "$lib/components/header.svelte";
   import Hero from "$lib/components/hero.svelte";
   import HowItWorks from "$lib/components/how-it-works.svelte";
@@ -14,33 +14,31 @@
   let observer;
 
   onMount(() => {
-    const sections = document.querySelectorAll('.section');
+    const container = document.querySelector('.snap-container');
+    const sections = Array.from(document.querySelectorAll('.section'));
 
+    // --- Animación al aparecer ---
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // No la volvemos a observar para que la animación ocurra solo una vez
+            // Solo una vez la animación
             observer.unobserve(entry.target);
           }
         });
       },
       {
         threshold: 0.3,
-        root: null, // viewport
+        root: container // usamos el contenedor con scroll, como al principio
       }
     );
 
     sections.forEach((section) => observer.observe(section));
   });
-
-  onDestroy(() => {
-    if (observer) observer.disconnect();
-  });
 </script>
 
-<div class="min-h-screen bg-background font-sans text-foreground selection:bg-primary/10">
+<div class="app-root min-h-screen bg-background font-sans text-foreground selection:bg-primary/10">
   <Header />
 
   <main class="snap-container">
@@ -58,41 +56,63 @@
 </div>
 
 <style>
-:root {
-  /* Easing aún más suave (más “gomoso”) */
-  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
-}
+  :root {
+    /* easing suave */
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  }
 
-.section {
-  height: 100vh;
-  scroll-snap-align: start;
+  /* IMPORTANTE: que no scrollee el body, solo el contenedor */
+  html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  .app-root {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
-  /* Estado inicial (igual que antes) */
-  opacity: 0;
-  transform: translateY(60px) scale(0.98);
-  filter: blur(8px);
+  .snap-container {
+    /* ocupa el alto disponible (bajo el header, si lo tienes estático) */
+    height: 100vh;
+    overflow-y: auto;
 
-  /* ANTES: 900ms
-     AHORA: 1400ms para que se note bien suave */
-  transition:
-    opacity 1400ms var(--ease-out-soft),
-    transform 1400ms var(--ease-out-soft),
-    filter 1400ms var(--ease-out-soft);
+    /* scroll por sección */
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
 
-  will-change: opacity, transform, filter;
-}
+  .section {
+    /* cada sección = “página” */
+    height: 100vh;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 
-.section.visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0);
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  /* Opcional: respetar usuarios con "reduced motion" activado en el SO */
+    /* Animación muy suave */
+    opacity: 0;
+    transform: translateY(60px) scale(0.98);
+    filter: blur(8px);
+
+    transition:
+      opacity 1600ms var(--ease-out-soft),
+      transform 1600ms var(--ease-out-soft),
+      filter 1600ms var(--ease-out-soft);
+
+    will-change: opacity, transform, filter;
+  }
+
+  .section.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .section {
       transition: none;
@@ -102,3 +122,4 @@
     }
   }
 </style>
+
