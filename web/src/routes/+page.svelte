@@ -17,20 +17,20 @@
     const container = document.querySelector('.snap-container');
     const sections = Array.from(document.querySelectorAll('.section'));
 
-    // --- Animación al aparecer ---
+    // Configurar observer para animaciones
+    const isDesktop = window.innerWidth > 768;
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            // Solo una vez la animación
             observer.unobserve(entry.target);
           }
         });
       },
       {
-        threshold: 0.3,
-        root: container // usamos el contenedor con scroll, como al principio
+        threshold: isDesktop ? 0.3 : 0.1, // Threshold más bajo en móvil para activar antes
+        root: isDesktop ? container : null // En desktop, root es el container; en móvil, la ventana
       }
     );
 
@@ -119,6 +119,47 @@
       opacity: 1;
       transform: none;
       filter: none;
+    }
+  }
+
+  /* Media query para móviles (ancho <= 768px): deshabilitar scroll-snap y animaciones */
+  @media (max-width: 768px) {
+    html, body {
+      overflow: auto; /* Permitir scroll normal en el body */
+    }
+
+    .app-root {
+      height: auto; /* Altura automática para contenido */
+    }
+
+    .snap-container {
+      height: auto; /* Altura automática */
+      overflow-y: visible; /* Sin overflow restringido */
+      scroll-snap-type: none; /* Quitar snap */
+      scroll-behavior: auto; /* Comportamiento normal */
+    }
+
+    .section {
+      height: auto; /* Altura automática para secciones */
+      scroll-snap-align: none; /* Quitar snap */
+      /* Animación desde abajo en móvil */
+      opacity: 0;
+      transform: translateY(100px);
+      filter: blur(4px);
+      transition:
+        opacity 1200ms var(--ease-out-soft),
+        transform 1200ms var(--ease-out-soft),
+        filter 1200ms var(--ease-out-soft);
+      will-change: opacity, transform, filter;
+      /* Espacio entre secciones para marcarlas */
+      margin-bottom: 4rem;
+      padding: 2rem 0;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
     }
   }
 </style>

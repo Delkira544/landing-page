@@ -51,7 +51,7 @@
           </li>
         </ul>
 
-        <Button size="lg" class="bg-primary hover:bg-primary/90 text-white border-0">
+        <Button size="lg" class="bg-primary-foreground foreground hover:bg-primary/90 text-primary border-0">
           Agenda una demo
         </Button>
       </div>

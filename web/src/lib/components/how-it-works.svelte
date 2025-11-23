@@ -21,10 +21,10 @@
 </script>
 
 <section id="como-funciona" class="bg-muted/30 h-screen flex justify-center items-center">
-  <div class="container px-4 md:px-6 mx-auto py-auto">
-    <div class="text-center max-w-3xl mx-auto mb-16">
+  <div class="container px-4 md:px-6 mx-auto py-8">
+    <div class="text-center max-w-3xl mx-auto mb-8 md:mb-16">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">¿Cómo funciona?</h2>
-      <p class="text-muted-foreground text-lg">
+      <p class="text-muted-foreground text-base md:text-lg">
         Tres simples pasos para empezar a mejorar tu comunidad hoy mismo.
       </p>
     </div>
@@ -35,14 +35,14 @@
 
       {#each steps as step, i}
         <div class="relative z-10 flex flex-col items-center text-center group">
-          <div class="mb-6 h-24 w-24 rounded-2xl bg-background border shadow-sm flex items-center justify-center group-hover:border-primary/50 group-hover:shadow-md transition-all duration-300">
-            <step.icon class="h-10 w-10 text-primary" />
+          <div class="mb-6 h-20 w-20 md:h-24 md:w-24 rounded-2xl bg-background border shadow-sm flex items-center justify-center group-hover:border-primary/50 group-hover:shadow-md transition-all duration-300">
+            <step.icon class="h-8 w-8 md:h-10 md:w-10 text-primary" />
           </div>
           <div class="space-y-2">
             <div class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary font-bold text-sm mb-2">
               {i + 1}
             </div>
-            <h3 class="text-xl font-bold">{step.title}</h3>
+            <h3 class="text-lg md:text-xl font-bold">{step.title}</h3>
             <p class="text-muted-foreground leading-relaxed max-w-[300px] mx-auto">
               {step.description}
             </p>

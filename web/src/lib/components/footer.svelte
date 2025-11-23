@@ -6,12 +6,12 @@
   <div class="container px-4 md:px-6 mx-auto">
     <div class="grid md:grid-cols-4 gap-8 mb-12">
       <div class="col-span-1 md:col-span-2">
-        <div class="flex items-center gap-2 mb-4">
-          <div class="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">
-            R
-          </div>
-          <span class="text-xl font-bold tracking-tight">ReportaCiudad</span>
+     <div class="flex items-center gap-2">
+         <div class="h-16 w-16 rounded-lg bg-primary flex items-center justify-center text-primary-foreground font-bold">
+          <img src="/icono.svg" alt="Logo" class="h-16 w-12 aspect-square" />
         </div>
+        <span class="text-xl font-bold tracking-tight">TemuTrack</span>
+      </div>
         <p class="text-muted-foreground max-w-xs mb-6">
           Conectando vecinos y municipios para construir mejores ciudades, un reporte a la vez.
         </p>
@@ -53,7 +53,7 @@
     </div>
     
     <div class="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-      <p>© {new Date().getFullYear()} ReportaCiudad. Todos los derechos reservados.</p>
+      <p>© {new Date().getFullYear()} TemuTrack. Todos los derechos reservados.</p>
       <p>Hecho con ❤️ por estudiantes universitarios.</p>
     </div>
   </div>

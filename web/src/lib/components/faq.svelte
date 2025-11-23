@@ -7,11 +7,11 @@
   } from "$lib/components/ui/accordion";
 </script>
 
-<section class="h-full flex justify-center items-center">
-  <div class="w-[50vw] h-[60vh] bg-muted/30 rounded-lg p-6 flex flex-col justify-center overflow-y-auto">
+<section class="h-full flex justify-center items-center px-4">
+  <div class="w-full md:w-[50vw] h-auto md:h-[60vh] bg-muted/30 rounded-lg p-6 flex flex-col justify-center overflow-y-auto">
     <div class="text-center mb-12">
-      <h2 class="text-3xl font-bold tracking-tight mb-4">Preguntas Frecuentes</h2>
-      <p class="text-muted-foreground">
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-4">Preguntas Frecuentes</h2>
+      <p class="text-muted-foreground text-sm md:text-base">
         Resolvemos tus dudas sobre la plataforma.
       </p>
     </div>
