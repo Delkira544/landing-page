@@ -1,5 +1,5 @@
 <script>
-  import { Github, Twitter, Linkedin } from 'lucide-svelte';
+  import { Github, Twitter, Linkedin, Instagram, Tv } from 'lucide-svelte';
 </script>
 
 <footer class="bg-muted/30 border-t py-12 md:py-16">
@@ -15,10 +15,19 @@
         <p class="text-muted-foreground max-w-xs mb-6">
           Conectando vecinos y municipios para construir mejores ciudades, un reporte a la vez.
         </p>
+        <!-- updated social links to include Instagram and TikTok -->
         <div class="flex gap-4">
           <a href="https://twitter.com" class="text-muted-foreground hover:text-primary transition-colors">
             <Twitter class="h-5 w-5" />
             <span class="sr-only">Twitter</span>
+          </a>
+          <a href="https://instagram.com/temutrack_oficial" class="text-muted-foreground hover:text-primary transition-colors">
+            <Instagram class="h-5 w-5" />
+            <span class="sr-only">Instagram</span>
+          </a>
+          <a href="https://tiktok.com/@temutrack" class="text-muted-foreground hover:text-primary transition-colors">
+            <Tv class="h-5 w-5" />
+            <span class="sr-only">TikTok</span>
           </a>
           <a href="https://github.com" class="text-muted-foreground hover:text-primary transition-colors">
             <Github class="h-5 w-5" />
@@ -34,10 +43,12 @@
       <div>
         <h3 class="font-bold mb-4">Producto</h3>
         <ul class="space-y-3 text-sm text-muted-foreground">
-          <li><a href="/como-funciona" class="hover:text-foreground transition-colors">Cómo funciona</a></li>
-          <li><a href="/ciudadanos" class="hover:text-foreground transition-colors">Para Ciudadanos</a></li>
-          <li><a href="/municipios" class="hover:text-foreground transition-colors">Para Municipios</a></li>
-          <li><a href="/casos-de-exito" class="hover:text-foreground transition-colors">Casos de éxito</a></li>
+          <li><a href="#como-funciona" class="hover:text-foreground transition-colors">Cómo funciona</a></li>
+          <li><a href="#ciudadanos" class="hover:text-foreground transition-colors">Para Ciudadanos</a></li>
+          <li><a href="#municipios" class="hover:text-foreground transition-colors">Para Municipios</a></li>
+          <!-- added new links for planes and blog -->
+          <li><a href="#planes" class="hover:text-foreground transition-colors">Planes</a></li>
+          <li><a href="#blog" class="hover:text-foreground transition-colors">Blog</a></li>
         </ul>
       </div>
 
@@ -47,7 +58,7 @@
           <li><a href="/terminos-de-servicio" class="hover:text-foreground transition-colors">Términos de servicio</a></li>
           <li><a href="/privacidad" class="hover:text-foreground transition-colors">Privacidad</a></li>
           <li><a href="/cookies" class="hover:text-foreground transition-colors">Cookies</a></li>
-          <li><a href="/contacto" class="hover:text-foreground transition-colors">Contacto</a></li>
+          <li><a href="#contacto" class="hover:text-foreground transition-colors">Contacto</a></li>
         </ul>
       </div>
     </div>

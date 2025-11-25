@@ -1,14 +1,18 @@
 <script>
   import { onMount } from 'svelte';
   import Header from "$lib/components/header.svelte";
-  import Hero from "$lib/components/hero.svelte";
+  import HeroCarousel from "$lib/components/hero-carousel.svelte";
+  import ValueProposition from "$lib/components/value-proposition.svelte";
+  import PricingPlans from "$lib/components/pricing-plans.svelte";
   import HowItWorks from "$lib/components/how-it-works.svelte";
   import BenefitsCitizens from "$lib/components/benefits-citizens.svelte";
   import BenefitsMunicipality from "$lib/components/benefits-municipality.svelte";
   import SocialProof from "$lib/components/social-proof.svelte";
-  import WhyCentralize from "$lib/components/why-centralize.svelte";
-  import FAQ from "$lib/components/faq.svelte";
-  import CTA from "$lib/components/cta.svelte";
+  import BlogSection from "$lib/components/blog-section.svelte";
+  import CommunitySection from "$lib/components/community-section.svelte";
+  import TeamSection from "$lib/components/team-section.svelte";
+  import ContactSection from "$lib/components/contact-section.svelte";
+  import FaqImproved from "$lib/components/faq-improved.svelte";
   import Footer from "$lib/components/footer.svelte";
 
   let observer;
@@ -29,8 +33,8 @@
         });
       },
       {
-        threshold: isDesktop ? 0.3 : 0.1, // Threshold más bajo en móvil para activar antes
-        root: isDesktop ? container : null // En desktop, root es el container; en móvil, la ventana
+        threshold: isDesktop ? 0.3 : 0.1,
+        root: isDesktop ? container : null
       }
     );
 
@@ -42,14 +46,18 @@
   <Header />
 
   <main class="snap-container">
-    <section class="section visible"><Hero /></section>
+    <section class="section visible"><HeroCarousel /></section>
+    <section class="section"><ValueProposition /></section>
     <section class="section"><HowItWorks /></section>
     <section class="section"><BenefitsCitizens /></section>
     <section class="section"><BenefitsMunicipality /></section>
+    <section class="section"><PricingPlans /></section>
     <section class="section"><SocialProof /></section>
-    <section class="section"><WhyCentralize /></section>
-    <section class="section"><FAQ /></section>
-    <section class="section"><CTA /></section>
+    <section class="section"><BlogSection /></section>
+    <section class="section"><CommunitySection /></section>
+    <section class="section"><TeamSection /></section>
+    <section class="section"><ContactSection /></section>
+    <section class="section"><FaqImproved /></section>
   </main>
 
   <Footer />
@@ -57,15 +65,7 @@
 
 <style>
   :root {
-    /* easing suave */
     --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  /* IMPORTANTE: que no scrollee el body, solo el contenedor */
-  html, body {
-    height: 100%;
-    margin: 0;
-    overflow: hidden;
   }
 
   .app-root {
@@ -75,35 +75,26 @@
   }
 
   .snap-container {
-    /* ocupa el alto disponible (bajo el header, si lo tienes estático) */
     height: 100vh;
     overflow-y: auto;
-
-    /* scroll por sección */
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }
 
   .section {
-    /* cada sección = “página” */
-    height: 100vh;
+    min-height: calc(100vh - 4rem); /* Cambiado: resta la altura del header (h-16 = 4rem) para que el contenido se acomode correctamente */
     scroll-snap-align: start;
     scroll-snap-stop: always;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* Animación muy suave */
     opacity: 0;
     transform: translateY(60px) scale(0.98);
     filter: blur(8px);
-
     transition:
       opacity 1600ms var(--ease-out-soft),
       transform 1600ms var(--ease-out-soft),
       filter 1600ms var(--ease-out-soft);
-
     will-change: opacity, transform, filter;
   }
 
@@ -122,27 +113,21 @@
     }
   }
 
-  /* Media query para móviles (ancho <= 768px): deshabilitar scroll-snap y animaciones */
   @media (max-width: 768px) {
-    html, body {
-      overflow: auto; /* Permitir scroll normal en el body */
-    }
-
     .app-root {
-      height: auto; /* Altura automática para contenido */
+      height: auto;
     }
 
     .snap-container {
-      height: auto; /* Altura automática */
-      overflow-y: visible; /* Sin overflow restringido */
-      scroll-snap-type: none; /* Quitar snap */
-      scroll-behavior: auto; /* Comportamiento normal */
+      height: auto;
+      overflow-y: visible;
+      scroll-snap-type: none;
+      scroll-behavior: auto;
     }
 
     .section {
-      height: auto; /* Altura automática para secciones */
-      scroll-snap-align: none; /* Quitar snap */
-      /* Animación desde abajo en móvil */
+      min-height: auto;
+      scroll-snap-align: none;
       opacity: 0;
       transform: translateY(100px);
       filter: blur(4px);
@@ -151,7 +136,6 @@
         transform 1200ms var(--ease-out-soft),
         filter 1200ms var(--ease-out-soft);
       will-change: opacity, transform, filter;
-      /* Espacio entre secciones para marcarlas */
       margin-bottom: 4rem;
       padding: 2rem 0;
     }
@@ -163,4 +147,3 @@
     }
   }
 </style>
-
