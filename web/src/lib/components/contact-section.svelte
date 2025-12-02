@@ -6,7 +6,7 @@
   import GoogleBusinessMockup from "$lib/components/google-business-mockup.svelte";
 </script>
 
-<section id="contacto" class="py-24 md:py-32 bg-background">
+<section id="contacto" class="py-32 md:py-40 bg-background">
   <div class="container px-4 md:px-6 mx-auto">
     <div class="grid lg:grid-cols-3 gap-12">
       <!-- Contact Info -->
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Google Business Mockup -->
-        <div class="mt-8">
+        <div class="mt-8 flex justify-center">
           <GoogleBusinessMockup />
         </div>
       </div>

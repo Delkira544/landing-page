@@ -13,23 +13,23 @@
   let showAvailabilityGrande = $state(false);
 </script>
 
-<section id="planes" class="py-2 md:py-2 bg-background"> <!-- Cambiado: reducido py-24 a py-16 en móvil para ahorrar espacio -->
+<section id="planes" class="py-16 md:py-24 bg-background">
   <div class="container px-4 md:px-6 mx-auto">
-    <div class="text-center mb-2 md:mb-6"> <!-- Cambiado: reducido mb-16 a mb-12 en móvil -->
+    <div class="text-center mb-12 md:mb-16">
       <div class="inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold bg-accent text-accent-foreground mb-4">
         Planes y Servicios
       </div>
-      <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight mb-2 md:mb-4 text-balance"> <!-- Cambiado: reducido text-3xl a text-2xl en móvil -->
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-4 text-balance">
         Soluciones para cada municipio
       </h2>
-      <p class="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto"> <!-- Cambiado: reducido text-lg a text-base en móvil -->
+      <p class="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto">
         Escala desde una prueba piloto hasta la gestión integral de tu ciudad.
       </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-8 md:mt-12"> <!-- Cambiado: gap-6 a gap-4 en móvil, mt-12 a mt-8 en móvil -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
       <!-- Plan 1: Piloto -->
-      <div class="relative p-6 md:p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col"> <!-- Cambiado: p-8 a p-6 en móvil -->
+      <div class="relative p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col">
         <div class="inline-flex items-center w-fit rounded-lg border px-2.5 py-1 text-xs font-semibold bg-secondary/10 text-secondary mb-4">
           Prueba Piloto
         </div>
@@ -73,7 +73,7 @@
       </div>
 
       <!-- Plan 2: Municipio Pequeño -->
-      <div class="relative p-6 md:p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col"> <!-- Cambiado: p-8 a p-6 en móvil -->
+      <div class="relative p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col">
         <Badge class="w-fit mb-4">Popular</Badge>
         <h3 class="text-xl font-bold mb-2">Municipio Pequeño</h3>
         <p class="text-sm text-muted-foreground mb-6">Ciudades hasta 50.000 habitantes</p>
@@ -119,7 +119,7 @@
       </div>
 
       <!-- Plan 3: Municipio Mediano -->
-      <div class="relative p-6 md:p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col"> <!-- Cambiado: p-8 a p-6 en móvil -->
+      <div class="relative p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col">
         <div class="inline-flex items-center w-fit rounded-lg border px-2.5 py-1 text-xs font-semibold bg-primary/10 text-primary mb-4">
           Recomendado
         </div>
@@ -308,7 +308,7 @@
       </div>
 
       <!-- Plan 4: Municipio Grande -->
-      <div class="relative p-6 md:p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col"> <!-- Cambiado: p-8 a p-6 en móvil -->
+      <div class="relative p-8 rounded-2xl border bg-background hover:shadow-lg transition-shadow h-full flex flex-col">
         <div class="inline-flex items-center w-fit rounded-lg border px-2.5 py-1 text-xs font-semibold bg-accent text-accent-foreground mb-4">
           Enterprise
         </div>

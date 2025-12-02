@@ -5,7 +5,7 @@
 <!-- Mockup de Google Business Profile -->
 <div class="rounded-xl border bg-background shadow-xl overflow-hidden max-w-md">
   <!-- Header con logo y nombre -->
-  <div class="p-6 bg-white dark:bg-slate-900 border-b">
+  <div class="p-6 bg-slate-50 dark:bg-slate-800 border-b">
     <div class="flex items-start gap-4 mb-4">
       <div class="h-20 w-20 rounded-lg bg-primary flex items-center justify-center shrink-0">
         <img src="/icono.svg" alt="TemuTrack Logo" class="h-14 w-14" />
@@ -18,8 +18,8 @@
           {/each}
           <span class="text-sm text-muted-foreground ml-1">4.9</span>
         </div>
-        <p class="text-xs text-muted-foreground">(127 reseñas)</p>
-        <p class="text-sm text-muted-foreground mt-1">Desarrollador de software</p>
+        <p class="text-xs text-foreground/70">(127 reseñas)</p>
+        <p class="text-sm text-foreground/80 mt-1">Desarrollador de software</p>
       </div>
     </div>
 
@@ -41,50 +41,50 @@
   <!-- Información de contacto -->
   <div class="p-6 space-y-4">
     <div class="flex items-start gap-3">
-      <MapPin class="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+      <MapPin class="h-5 w-5 text-foreground/60 shrink-0 mt-0.5" />
       <div>
-        <p class="text-sm font-medium">Dirección</p>
-        <p class="text-sm text-muted-foreground">Temuco, Región de La Araucanía</p>
+        <p class="text-sm font-semibold">Dirección</p>
+        <p class="text-sm text-foreground/80">Temuco, Región de La Araucanía</p>
       </div>
     </div>
 
     <div class="flex items-start gap-3">
-      <Phone class="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+      <Phone class="h-5 w-5 text-foreground/60 shrink-0 mt-0.5" />
       <div>
-        <p class="text-sm font-medium">Teléfono</p>
+        <p class="text-sm font-semibold">Teléfono</p>
         <a href="tel:+56912345678" class="text-sm text-primary hover:underline">+56 9 1234 5678</a>
       </div>
     </div>
 
     <div class="flex items-start gap-3">
-      <Globe class="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+      <Globe class="h-5 w-5 text-foreground/60 shrink-0 mt-0.5" />
       <div>
-        <p class="text-sm font-medium">Sitio web</p>
+        <p class="text-sm font-semibold">Sitio web</p>
         <a href="https://temutrack.vercel.app" target="_blank" rel="noopener" class="text-sm text-primary hover:underline">temutrack.vercel.app</a>
       </div>
     </div>
 
     <div class="flex items-start gap-3">
-      <Mail class="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+      <Mail class="h-5 w-5 text-foreground/60 shrink-0 mt-0.5" />
       <div>
-        <p class="text-sm font-medium">Correo electrónico</p>
+        <p class="text-sm font-semibold">Correo electrónico</p>
         <a href="mailto:hola@temutrack.cl" class="text-sm text-primary hover:underline">hola@temutrack.cl</a>
       </div>
     </div>
 
     <!-- Horario -->
     <div class="flex items-start gap-3 pt-4 border-t">
-      <Clock class="h-5 w-5 text-muted-foreground shrink-0 mt-0.5" />
+      <Clock class="h-5 w-5 text-foreground/60 shrink-0 mt-0.5" />
       <div class="flex-1">
         <p class="text-sm font-bold mb-2">HORARIO</p>
         <div class="space-y-1 text-sm">
           <div class="flex justify-between">
-            <span class="text-muted-foreground">Lun-Vie:</span>
-            <span class="font-medium">9:00-18:00</span>
+            <span class="text-foreground/70">Lun-Vie:</span>
+            <span class="font-semibold">9:00-18:00</span>
           </div>
           <div class="flex justify-between">
-            <span class="text-muted-foreground">Sáb-Dom:</span>
-            <span class="font-medium">Cerrado</span>
+            <span class="text-foreground/70">Sáb-Dom:</span>
+            <span class="font-semibold">Cerrado</span>
           </div>
         </div>
         <p class="text-xs text-primary font-medium mt-2">Soporte online 24/7</p>
@@ -128,7 +128,7 @@
           </div>
           <div class="flex-1">
             <p class="text-sm font-semibold">María González</p>
-            <p class="text-xs text-muted-foreground">Hace 2 días</p>
+            <p class="text-xs text-foreground/60">Hace 2 días</p>
           </div>
           <div class="flex gap-0.5">
             {#each [1, 2, 3, 4, 5] as star}
@@ -136,7 +136,7 @@
             {/each}
           </div>
         </div>
-        <p class="text-sm text-muted-foreground">
+        <p class="text-sm text-foreground/90">
           Excelente plataforma, reporté un bache y en 5 días estaba arreglado!
         </p>
       </div>
@@ -149,7 +149,7 @@
           </div>
           <div class="flex-1">
             <p class="text-sm font-semibold">Roberto Muñoz</p>
-            <p class="text-xs text-muted-foreground">Hace 1 semana</p>
+            <p class="text-xs text-foreground/60">Hace 1 semana</p>
           </div>
           <div class="flex gap-0.5">
             {#each [1, 2, 3, 4, 5] as star}
@@ -157,7 +157,7 @@
             {/each}
           </div>
         </div>
-        <p class="text-sm text-muted-foreground">
+        <p class="text-sm text-foreground/90">
           Como presidente de JJ.VV nos cambió la forma de trabajar con la muni
         </p>
       </div>
