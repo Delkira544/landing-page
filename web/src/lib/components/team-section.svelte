@@ -6,8 +6,8 @@
   <div class="container px-4 md:px-6 mx-auto">
     <div class="grid lg:grid-cols-2 gap-12 items-center">
       <!-- Image -->
-      <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary/20 to-secondary/20 aspect-square flex items-center justify-center order-2 lg:order-1">
-        <span class="text-8xl">👥</span>
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl order-2 lg:order-1">
+        <img src="/blog/Equipo.png" alt="Equipo TemuTrack" class="w-full h-full object-cover" />
       </div>
 
       <!-- Content -->

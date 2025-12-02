@@ -1,6 +1,7 @@
 <script>
   import { Menu, X } from 'lucide-svelte';
   import { Button } from "$lib/components/ui/button";
+  import ThemeToggle from "$lib/components/theme-toggle.svelte";
   
   let isMenuOpen = $state(false);
   
@@ -9,7 +10,7 @@
   }
 </script>
 
-<header class="sticky top-0 z-50 w-full border-b bg-white">
+<header class="sticky top-0 z-50 w-full border-b bg-background">
   <div class="container mx-auto px-4 md:px-6">
     <div class="flex h-16 items-center justify-between">
       <div class="flex items-center gap-2">
@@ -41,6 +42,7 @@
           Contacto
         </a>
         <div class="flex items-center gap-4 ml-2">
+          <ThemeToggle />
           <Button variant="ghost" size="sm">Iniciar Sesión</Button>
           <Button size="sm" class="bg-secondary hover:bg-secondary/90 text-white">Descargar App</Button>
         </div>
@@ -81,6 +83,10 @@
           Contacto
         </a>
         <div class="flex flex-col gap-2 pt-4 border-t">
+          <div class="flex items-center justify-between py-2">
+            <span class="text-sm font-medium">Tema</span>
+            <ThemeToggle />
+          </div>
           <Button variant="outline" class="w-full justify-start">Iniciar Sesión</Button>
           <Button class="w-full bg-secondary hover:bg-secondary/90 text-white justify-start">Descargar App</Button>
         </div>
