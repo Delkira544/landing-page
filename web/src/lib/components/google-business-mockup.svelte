@@ -3,36 +3,36 @@
 </script>
 
 <!-- Mockup de Google Business Profile -->
-<div class="rounded-xl border bg-background shadow-xl overflow-hidden max-w-md">
+<div class="rounded-xl border bg-background shadow-xl overflow-hidden w-full max-w-md mx-auto">
   <!-- Header con logo y nombre -->
-  <div class="p-6 bg-slate-50 dark:bg-slate-800 border-b">
+  <div class="p-6 bg-slate-800 border-b border-slate-700">
     <div class="flex items-start gap-4 mb-4">
       <div class="h-20 w-20 rounded-lg bg-primary flex items-center justify-center shrink-0">
         <img src="/icono.svg" alt="TemuTrack Logo" class="h-14 w-14" />
       </div>
       <div class="flex-1">
-        <h3 class="text-xl font-bold mb-1">TemuTrack</h3>
+        <h3 class="text-xl font-bold mb-1 text-white">TemuTrack</h3>
         <div class="flex items-center gap-1 mb-1">
           {#each [1, 2, 3, 4, 5] as star}
             <Star class="h-4 w-4 fill-yellow-400 text-yellow-400" />
           {/each}
-          <span class="text-sm text-muted-foreground ml-1">4.9</span>
+          <span class="text-sm text-gray-200 ml-1">4.9</span>
         </div>
-        <p class="text-xs text-foreground/70">(127 reseñas)</p>
-        <p class="text-sm text-foreground/80 mt-1">Desarrollador de software</p>
+        <p class="text-xs text-gray-200">(127 reseñas)</p>
+        <p class="text-sm text-gray-100 mt-1">Desarrollador de software</p>
       </div>
     </div>
 
     <!-- Botones de acción -->
     <div class="flex gap-2">
-      <button class="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium border rounded-md hover:bg-accent transition-colors">
+      <button class="flex-1 flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white border border-white/30 rounded-md hover:bg-white/10 transition-colors">
         <Navigation class="h-4 w-4" />
         Indicaciones
       </button>
-      <button class="px-4 py-2 text-sm font-medium border rounded-md hover:bg-accent transition-colors">
+      <button class="px-4 py-2 text-sm font-medium text-white border border-white/30 rounded-md hover:bg-white/10 transition-colors">
         <Bookmark class="h-4 w-4" />
       </button>
-      <button class="px-4 py-2 text-sm font-medium border rounded-md hover:bg-accent transition-colors">
+      <button class="px-4 py-2 text-sm font-medium text-white border border-white/30 rounded-md hover:bg-white/10 transition-colors">
         <Share2 class="h-4 w-4" />
       </button>
     </div>
