@@ -3,6 +3,7 @@
   import { Input } from "$lib/components/ui/input";
   import { Label } from "$lib/components/ui/label";
   import { MapPin, Phone, Mail } from 'lucide-svelte';
+  import GoogleBusinessMockup from "$lib/components/google-business-mockup.svelte";
 </script>
 
 <section id="contacto" class="py-24 md:py-32 bg-background">
@@ -57,7 +58,12 @@
 
         <!-- Map placeholder -->
         <div class="mt-8 rounded-lg overflow-hidden h-64 bg-muted border">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.819721647275!2d-72.55167115355266!3d-38.70312567637626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9614d25eaf6a6155%3A0x1923a4870c05054c!2sRudecindo%20Ortega%2C%20Temuco%2C%20Araucan%C3%ADa!5e0!3m2!1sen!2scl!4v1764085622217!5m2!1sen!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1556.819721647275!2d-72.55167115355266!3d-38.70312567637626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9614d25eaf6a6155%3A0x1923a4870c05054c!2sRudecindo%20Ortega%2C%20Temuco%2C%20Araucan%C3%ADa!5e0!3m2!1sen!2scl!4v1764085622217!5m2!1sen!2scl" width="600" height="450" style="border:0;" loading="lazy"></iframe>
+        </div>
+
+        <!-- Google Business Mockup -->
+        <div class="mt-8">
+          <GoogleBusinessMockup />
         </div>
       </div>
 
