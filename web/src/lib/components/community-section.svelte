@@ -18,8 +18,8 @@
       <!-- Instagram -->
       <div class="rounded-2xl border bg-gradient-to-br from-primary/5 to-secondary/5 p-8 md:p-12 max-w-2xl w-full">
         <div class="flex items-center gap-4 mb-6">
-          <div class="h-12 w-12 rounded-full bg-secondary flex items-center justify-center text-white">
-            <Instagram class="h-6 w-6" />
+          <div class="h-12 w-12 rounded-full bg-secondary flex items-center justify-center overflow-hidden">
+            <img src="/icono.svg" alt="Logo TemuTrack" class="h-8 w-8" />
           </div>
           <div>
             <h3 class="text-xl font-bold">@temutrack_oficial</h3>
