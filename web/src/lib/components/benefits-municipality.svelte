@@ -58,7 +58,7 @@
 
       <div class="relative rounded-xl border border-white/10 bg-white/5 backdrop-blur p-2 shadow-2xl">
         <img 
-            src="/placeholder.svg?height=600&width=800" 
+            src="/Dashboard.png" 
             alt="Dashboard Municipal"
             class="w-full rounded-lg border border-white/5 shadow-inner"
         />
