@@ -144,7 +144,7 @@
 
         <!-- Nota al pie -->
         <p class="text-sm text-muted-foreground italic">
-          Este proyecto nació en la asignatura Planificación Estratégica Web y RRSS, pero creció hasta convertirse en algo que queremos que exista de verdad.
+          Este proyecto nació en la asignatura Taller de Integración 4, pero creció hasta convertirse en algo que queremos que exista de verdad.
         </p>
 
         <!-- Firma -->
