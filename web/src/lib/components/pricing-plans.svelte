@@ -45,7 +45,7 @@
           <p class="text-sm italic text-muted-foreground">
             "Temutrack nos permitió probar el concepto sin riesgo"
           </p>
-          <p class="text-xs text-muted-foreground mt-2">— Municipalidad de ejemplo</p>
+          <p class="text-xs text-muted-foreground mt-2">— Municipalidad de Chochol</p>
         </div>
 
         <ul class="space-y-3 mb-8 flex-1">
@@ -324,7 +324,7 @@
           <p class="text-sm italic text-muted-foreground">
             "Solución completa adaptada a nuestras necesidades"
           </p>
-          <p class="text-xs text-muted-foreground mt-2">— Municipalidad de referencia</p>
+          <p class="text-xs text-muted-foreground mt-2">— Municipalidad de Temuco</p>
         </div>
 
         <ul class="space-y-3 mb-8 flex-1">
