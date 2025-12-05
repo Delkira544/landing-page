@@ -1,38 +1,53 @@
 <script>
   import { Button } from "$lib/components/ui/button";
-  import { ArrowRight, Download, ChevronLeft, ChevronRight } from 'lucide-svelte';
-  import { onMount } from 'svelte';
+  import { ArrowRight, ChevronLeft, ChevronRight, Camera, MapPin, CheckCircle2, FileWarning, Mail, Check } from 'lucide-svelte';
+  import { onMount, onDestroy } from 'svelte';
+  import { fade, fly } from 'svelte/transition';
 
   let currentSlide = $state(0);
   let autoPlayInterval;
 
+  // Datos estrictamente basados en el documento "TemuTrack"
   const slides = [
     {
-      id: 'que',
-      title: '¿Reportes que se pierden en redes sociales y llamadas?',
-      subtitle: 'TemuTrack centraliza todos los reportes ciudadanos en una plataforma única, ordenada y geo-referenciada.',
-      description: 'Transforma la forma en que vecinos y municipios se comunican sobre problemas urbanos.',
-      cta: 'Descargar app',
-      ctaAlt: 'Solicitar demo',
-      icon: '📍'
+      id: 'que-hacemos',
+      visualType: 'hero', // Mujer + App Flotante
+      title: '¿Cansada de que los mismos hoyos y veredas rotas sigan ahí todos los días?',
+      subtitle: 'Con TemuTrack reportas problemas de tu barrio en segundos, sigues tu denuncia y ves qué está haciendo el municipio, todo desde tu celular.',
+      description: 'Ordenamos los reportes ciudadanos en un solo lugar, con mapa, estados y prioridades claras.',
+      ctaPrimary: 'Reportar un problema ahora',
+      ctaPrimarySubtext: 'Toma menos de 1 minuto y es gratis.',
+      ctaSecondary: 'Ver demo para municipios',
+      ctaSecondarySubtext: 'Centraliza los reportes ciudadanos.',
+      color: 'bg-[#2ECC71]'
     },
     {
       id: 'por-que',
-      title: 'Porque tu ciudad merece mejor comunicación',
-      subtitle: 'Creemos que la participación ciudadana es clave para construir comunidades resilientes y transparentes.',
-      description: 'Cada reporte cuenta. Cada voz importa. Juntos podemos mejorar nuestras ciudades.',
-      cta: 'Únete a la comunidad',
-      ctaAlt: 'Conocer más',
-      icon: '🤝'
+      visualType: 'chaos-order', // Ilustración Caos vs Orden
+      title: 'Tus denuncias no deberían perderse entre correos, llamadas y comentarios en Facebook.',
+      subtitle: 'Del caos burocrático a la transparencia digital.',
+      description: 'En Temuco, muchos problemas se reportan pero pocos se siguen. TemuTrack nace para dar trazabilidad a esos reclamos y convertirlos en soluciones.',
+      ctaPrimary: 'Conoce nuestra misión',
+      ctaPrimarySubtext: 'Recuperando la confianza ciudadana.',
+      ctaSecondary: null, // Slide enfocado en misión
+      color: 'bg-blue-500'
     },
     {
-      id: 'como',
-      title: 'Así funciona el cambio en tres pasos',
-      subtitle: 'Un proceso simple que conecta necesidades reales con soluciones concretas.',
-      description: 'Ciudadano reporta → Plataforma centraliza → Municipio gestiona y resuelve.',
-      cta: 'Ver demo en vivo',
-      ctaAlt: 'Documentación',
-      icon: '✨'
+      id: 'como-funciona',
+      visualType: 'process', // Tríptico de celulares
+      title: 'Saca la foto, envía el reporte y sigue el avance desde tu celular.',
+      subtitle: 'Tan simple como enviar un mensaje.',
+      // Lista de pasos específica para este slide
+      steps: [
+        { icon: Camera, title: '1. Captura', text: 'Saca una foto y marca el lugar.' },
+        { icon: MapPin, title: '2. Envía', text: 'Tu reporte llega directo al municipio.' },
+        { icon: CheckCircle2, title: '3. Sigue', text: 'Revisa cuando cambie a "Resuelto".' }
+      ],
+      ctaPrimary: 'Descargar App',
+      ctaPrimarySubtext: 'Disponible en iOS y Android.',
+      ctaSecondary: 'Ver tutorial',
+      ctaSecondarySubtext: null,
+      color: 'bg-indigo-500'
     }
   ];
 
@@ -55,112 +70,270 @@
     clearInterval(autoPlayInterval);
     autoPlayInterval = setInterval(() => {
       currentSlide = (currentSlide + 1) % slides.length;
-    }, 6000);
+    }, 8000);
   }
 
   onMount(() => {
-    autoPlayInterval = setInterval(() => {
-      currentSlide = (currentSlide + 1) % slides.length;
-    }, 6000);
+    resetAutoPlay();
+  });
 
-    return () => clearInterval(autoPlayInterval);
+  onDestroy(() => {
+    clearInterval(autoPlayInterval);
   });
 
   let slide = $derived(slides[currentSlide]);
 </script>
 
-<section class="relative overflow-hidden pt-4 md:pt-4 lg:pt-4 pb-18 min-h-screen flex items-center">
-  <div class="container px-4 md:px-6 mx-auto w-full">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Content Side -->
-      <div class="flex flex-col gap-6">
-        <div class="text-5xl md:text-6xl font-bold mb-4">
-          {slide.icon}
-        </div>
+<section class="relative overflow-hidden pt-8 md:pt-12 lg:pt-20 pb-16 min-h-[90vh] flex items-center bg-gradient-to-b from-slate-50 to-white">
+  
+  <div class="container px-4 md:px-6 mx-auto w-full relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- COLUMNA IZQUIERDA: TEXTO Y CONTENIDO -->
+      <!-- Usamos {#key} para reiniciar la animación de texto al cambiar slide -->
+      {#key currentSlide}
+      <div 
+        in:fly={{ y: 20, duration: 500, delay: 100 }} 
+        class="flex flex-col gap-6 lg:gap-8 text-left order-2 lg:order-1"
+      >
         
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-balance leading-tight">
+        <!-- Título Principal -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-slate-900 leading-tight lg:leading-[1.1]">
           {slide.title}
         </h1>
         
-        <p class="text-lg text-muted-foreground md:text-xl text-balance leading-relaxed max-w-[600px]">
+        <!-- Subtítulo -->
+        <p class="text-lg md:text-xl text-slate-700 leading-relaxed font-medium">
           {slide.subtitle}
         </p>
 
-        <p class="text-base md:text-lg text-muted-foreground/80">
-          {slide.description}
-        </p>
+        <!-- Contenido Condicional: Descripción Normal o Pasos (Slide 3) -->
+        {#if slide.steps}
+          <!-- Lógica específica para el slide "Cómo funciona" -->
+          <div class="grid gap-4 mt-2">
+            {#each slide.steps as step}
+              <div class="flex items-start gap-4 p-3 rounded-lg bg-slate-50 border border-slate-100 hover:border-slate-200 transition-colors">
+                <div class="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center shrink-0 text-indigo-600">
+                  <step.icon class="h-5 w-5" />
+                </div>
+                <div>
+                  <h3 class="font-bold text-slate-900">{step.title}</h3>
+                  <p class="text-sm text-slate-600">{step.text}</p>
+                </div>
+              </div>
+            {/each}
+          </div>
+        {:else}
+          <!-- Descripción estándar para otros slides -->
+          <p class="text-base md:text-lg text-slate-600 leading-relaxed max-w-[560px]">
+            {slide.description}
+          </p>
+        {/if}
 
-        <div class="flex flex-col sm:flex-row gap-4 mt-6">
-          <Button size="lg" class="bg-secondary hover:bg-secondary/90 text-white text-base h-12 px-8">
-            <Download class="mr-2 h-5 w-5" />
-            {slide.cta}
-          </Button>
-          <Button variant="outline" size="lg" class="text-base h-12 px-8">
-            {slide.ctaAlt}
-            <ArrowRight class="ml-2 h-4 w-4" />
-          </Button>
+        <!-- Botones CTA -->
+        <div class="flex flex-col sm:flex-row gap-4 mt-4 lg:mt-6 items-start">
+          
+          <div class="space-y-2 w-full sm:w-auto">
+            <Button 
+              size="lg" 
+              class="{slide.color} hover:opacity-90 text-white text-base lg:text-lg font-semibold h-14 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 w-full"
+            >
+              {slide.ctaPrimary}
+            </Button>
+            {#if slide.ctaPrimarySubtext}
+              <p class="text-xs text-slate-500 font-medium text-center sm:text-left px-1">
+                {slide.ctaPrimarySubtext}
+              </p>
+            {/if}
+          </div>
+
+          {#if slide.ctaSecondary}
+            <div class="space-y-2 w-full sm:w-auto">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                class="border-2 border-slate-200 text-slate-700 hover:border-slate-300 hover:bg-slate-50 text-base lg:text-lg font-semibold h-14 px-6 rounded-xl transition-all duration-200 w-full"
+              >
+                {slide.ctaSecondary}
+                <ArrowRight class="ml-2 h-4 w-4" />
+              </Button>
+              {#if slide.ctaSecondarySubtext}
+                <p class="text-xs text-slate-500 text-center sm:text-left px-1">
+                  {slide.ctaSecondarySubtext}
+                </p>
+              {/if}
+            </div>
+          {/if}
         </div>
 
-        <!-- Slide Indicators -->
-        <div class="flex gap-2 mt-8">
-          {#each slides as _, i}
+        <!-- Indicadores de Slide (Puntos) -->
+        <div class="flex gap-3 mt-4">
+          {#each slides as s, i}
             <button
               onclick={() => goToSlide(i)}
-              class="h-2 transition-all {currentSlide === i ? 'w-8 bg-primary' : 'w-2 bg-muted-foreground/40'}"
-              aria-label="Go to slide {i + 1}"
-></button>
+              class="h-2 transition-all duration-300 rounded-full {currentSlide === i ? `w-8 ${s.color}` : 'w-2 bg-slate-300 hover:bg-slate-400'}"
+              aria-label="Ir al slide {i + 1}"
+            ></button>
           {/each}
         </div>
-      </div>
 
-      <!-- Image Side / Visual -->
-      <div class="relative mx-auto lg:ml-auto w-full max-w-[300px] lg:max-w-[400px] aspect-[9/19] bg-black rounded-[3rem] border-8 border-zinc-900 shadow-2xl overflow-hidden hidden lg:block">
-        <div class="absolute top-0 inset-x-0 h-6 bg-zinc-900 rounded-b-3xl w-1/2 mx-auto z-20"></div>
-        <div class="relative h-full w-full bg-white flex flex-col">
-          <img 
-            src="/telefono.png" 
-            alt="TemuTrack app interface"
-            class="w-full h-full object-cover"
-          />
-          <div class="absolute bottom-8 left-4 right-4 bg-white/90 backdrop-blur p-4 rounded-2xl shadow-lg border">
-            <div class="flex items-center gap-3 mb-3">
-              <div class="h-10 w-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" x2="12" y1="8" y2="12"/><line x1="12" x2="12.01" y1="16" y2="16"/></svg>
+      </div>
+      {/key}
+
+      <!-- COLUMNA DERECHA: VISUALES DINÁMICOS -->
+      <!-- Aquí es donde cambiamos la composición visual según el tipo de slide -->
+      <div class="relative order-1 lg:order-2 h-[400px] lg:h-[600px] flex items-center justify-center lg:justify-end perspective-1000">
+        
+        {#key currentSlide}
+          <div in:fade={{ duration: 400 }} class="absolute inset-0 flex items-center justify-center lg:justify-end w-full h-full">
+            
+            <!-- VISUAL TIPO 1: HERO (Mujer + App) -->
+            {#if slide.visualType === 'hero'}
+              <div class="relative w-full max-w-[500px]">
+                <!-- Imagen Principal (Foto Mujer) -->
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl bg-slate-200 border-4 border-white aspect-[4/5] lg:aspect-square">
+                   <!-- Placeholder para la imagen generada "Mujer con hijo y bache" -->
+                   <img src="/mujer-temuco-calle.jpg" alt="Mujer reportando bache" class="w-full h-full object-cover" />
+                   <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                </div>
+
+                <!-- Elemento Flotante: Mockup App -->
+                <div class="absolute -right-4 lg:-right-12 top-10 w-40 lg:w-48 transform rotate-6 shadow-2xl rounded-[2.5rem] bg-black p-2 border border-slate-800 animate-float">
+                  <div class="bg-white rounded-[2rem] h-80 overflow-hidden relative">
+                    <!-- Mapa simulado -->
+                    <div class="absolute inset-0 bg-slate-100">
+                      <div class="absolute top-1/3 left-1/4 w-4 h-4 bg-red-500 rounded-full shadow-lg"></div>
+                      <div class="absolute top-1/2 right-1/3 w-4 h-4 bg-red-500 rounded-full shadow-lg"></div>
+                      <!-- Botón Reportar en UI -->
+                      <div class="absolute bottom-4 left-4 right-4 h-10 bg-[#2ECC71] rounded-lg flex items-center justify-center text-white font-bold text-xs">
+                        REPORTAR
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p class="font-bold text-sm">{slide.id === 'que' ? 'Bache peligroso' : 'Tu reporte'}</p>
-                <p class="text-xs text-muted-foreground">Av. Principal • Hace 5 min</p>
+            
+            <!-- VISUAL TIPO 2: CAOS VS ORDEN -->
+            {:else if slide.visualType === 'chaos-order'}
+              <div class="relative w-full max-w-[550px] flex items-center justify-center gap-4">
+                
+                <!-- Lado Izquierdo: CAOS (Desvanecido/Borroso) -->
+                <div class="relative w-1/2 opacity-60 scale-90 grayscale blur-[1px]">
+                  <div class="absolute -top-10 -left-4 bg-white p-3 shadow-lg rounded-lg rotate-[-12deg] z-10">
+                    <FileWarning class="text-red-500 h-8 w-8" />
+                  </div>
+                  <div class="absolute top-20 right-0 bg-white p-3 shadow-lg rounded-lg rotate-[15deg] z-10">
+                    <Mail class="text-orange-500 h-8 w-8" />
+                  </div>
+                  <div class="bg-slate-100 rounded-2xl p-6 h-64 border-2 border-dashed border-slate-300 flex flex-col items-center justify-center gap-2">
+                    <p class="font-bold text-slate-400 text-xl">ANTES</p>
+                    <p class="text-xs text-center text-slate-400">Denuncias perdidas<br>sin respuesta</p>
+                  </div>
+                </div>
+
+                <!-- Flecha Transición -->
+                <div class="z-20 bg-white rounded-full p-2 shadow-xl">
+                  <ArrowRight class="h-6 w-6 text-blue-500" />
+                </div>
+
+                <!-- Lado Derecho: ORDEN (Nítido/Destacado) -->
+                <div class="relative w-1/2 scale-105 z-10">
+                   <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-100">
+                      <div class="bg-blue-500 p-4 text-white text-center font-bold text-sm">
+                        PANEL TEMUTRACK
+                      </div>
+                      <div class="p-4 space-y-3">
+                        <div class="flex items-center gap-2 text-xs p-2 bg-green-50 rounded-lg border border-green-100">
+                           <CheckCircle2 class="h-4 w-4 text-green-600" />
+                           <span class="font-medium text-slate-700">Bache (Resuelto)</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-xs p-2 bg-blue-50 rounded-lg border border-blue-100">
+                           <div class="h-4 w-4 rounded-full border-2 border-blue-400 border-t-transparent animate-spin"></div>
+                           <span class="font-medium text-slate-700">Luminaria (En proceso)</span>
+                        </div>
+                      </div>
+                   </div>
+                </div>
               </div>
-            </div>
-            <div class="h-2 w-full bg-secondary/20 rounded-full overflow-hidden">
-              <div class="h-full w-1/3 bg-secondary"></div>
-            </div>
-            <p class="text-[10px] text-right mt-1 text-muted-foreground">En revisión</p>
+
+            <!-- VISUAL TIPO 3: PROCESO (TRÍPTICO) -->
+            {:else if slide.visualType === 'process'}
+              <div class="relative w-full max-w-[600px] h-full flex items-center justify-center">
+                <!-- Conexión de linea -->
+                <div class="absolute top-1/2 left-10 right-10 h-1 bg-slate-200 -z-10 rounded-full"></div>
+
+                <div class="flex justify-between w-full items-center">
+                  <!-- Paso 1 -->
+                  <div class="relative group">
+                     <div class="w-24 h-48 bg-slate-800 rounded-2xl shadow-xl border-4 border-slate-900 p-1 flex flex-col items-center justify-center transform group-hover:-translate-y-2 transition-transform bg-white">
+                        <Camera class="h-8 w-8 text-indigo-500 mb-2" />
+                        <div class="h-2 w-12 bg-slate-100 rounded-full"></div>
+                     </div>
+                     <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-bold text-sm text-slate-500">1. Foto</div>
+                  </div>
+
+                  <!-- Flecha -->
+                  <ArrowRight class="text-slate-300 h-6 w-6" />
+
+                  <!-- Paso 2 -->
+                  <div class="relative group">
+                     <div class="w-24 h-48 bg-slate-800 rounded-2xl shadow-xl border-4 border-slate-900 p-1 flex flex-col items-center justify-center transform group-hover:-translate-y-2 transition-transform delay-75 bg-white">
+                        <MapPin class="h-8 w-8 text-indigo-500 mb-2" />
+                        <div class="h-2 w-12 bg-slate-100 rounded-full"></div>
+                     </div>
+                     <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-bold text-sm text-slate-500">2. Mapa</div>
+                  </div>
+
+                  <!-- Flecha -->
+                  <ArrowRight class="text-slate-300 h-6 w-6" />
+
+                  <!-- Paso 3 -->
+                  <div class="relative group">
+                     <div class="w-24 h-48 bg-slate-800 rounded-2xl shadow-xl border-4 border-slate-900 p-1 flex flex-col items-center justify-center transform group-hover:-translate-y-2 transition-transform delay-150 bg-white">
+                        <div class="bg-green-100 p-2 rounded-full mb-2">
+                           <Check class="h-6 w-6 text-green-600" />
+                        </div>
+                        <div class="h-2 w-12 bg-slate-100 rounded-full"></div>
+                     </div>
+                     <div class="absolute -bottom-8 left-1/2 -translate-x-1/2 font-bold text-sm text-slate-500">3. Listo</div>
+                  </div>
+                </div>
+              </div>
+            {/if}
+
           </div>
-        </div>
+        {/key}
       </div>
+
     </div>
 
-    <!-- Navigation Arrows -->
-    <div class="absolute bottom-8 left-0 right-0 flex justify-center gap-4 lg:hidden">
-      <button
-        onclick={prevSlide}
-        class="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft class="h-5 w-5" />
+    <!-- Navegación móvil (Flechas) -->
+    <div class="flex justify-center gap-6 mt-12 lg:hidden">
+      <button onclick={prevSlide} class="h-12 w-12 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+        <ChevronLeft class="h-6 w-6" />
       </button>
-      <button
-        onclick={nextSlide}
-        class="h-10 w-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center hover:bg-primary/90 transition-colors"
-        aria-label="Next slide"
-      >
-        <ChevronRight class="h-5 w-5" />
+      <button onclick={nextSlide} class="h-12 w-12 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center shadow-lg active:scale-95 transition-transform">
+        <ChevronRight class="h-6 w-6" />
       </button>
     </div>
+
   </div>
 
-  <!-- Background decoration -->
-  <div class="absolute top-0 right-0 -z-10 h-[600px] w-[600px] bg-primary/5 blur-[120px] rounded-full translate-x-1/3 -translate-y-1/4"></div>
-  <div class="absolute bottom-0 left-0 -z-10 h-[600px] w-[600px] bg-secondary/5 blur-[100px] rounded-full -translate-x-1/3 translate-y-1/4"></div>
+  <!-- Decoración de fondo ambiental -->
+  <div class="absolute top-0 right-0 -z-10 h-[600px] w-[600px] {slide.color} opacity-5 blur-[120px] rounded-full translate-x-1/3 -translate-y-1/4 transition-colors duration-1000"></div>
 </section>
+
+<style>
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(6deg); }
+    50% { transform: translateY(-15px) rotate(6deg); }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>
